@@ -257,7 +257,7 @@ mviewer.customControls.zero_dechet = (function() {
 			
 			setTimeout(function () {
 				mviewer.customLayers.zero_dechet.layer.getSource().refresh();
-			  }, 1000);
+			  }, 500);
         },
 		
 		
