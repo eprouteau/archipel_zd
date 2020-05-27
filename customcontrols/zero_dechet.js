@@ -1,4 +1,4 @@
-mviewer.customControls.obs_faune_flore_demo = (function() {
+mviewer.customControls.zero_dechet = (function() {
     /*
      * Private
      */
@@ -49,29 +49,29 @@ mviewer.customControls.obs_faune_flore_demo = (function() {
 		applyEvent: function ()
 		 {
 		var newFile='';	
-		var acteur = document.getElementById('acteur');
-		var categorie = document.getElementById('categorie');
-		var categorieSouscategorie = document.getElementById('souscategorie');
-		var text = document.getElementById('activite_produit');
-		var demarcheZd = document.getElementById('demarchezd');
-		var referent = document.getElementById('referent');
-		var tel = document.getElementById('tel');
-		var siteinternet = document.getElementById('siteinternet');
-		var facebook = document.getElementById('facebook');
-		var adressenum = document.getElementById('adressenum');
-		var adressevoie = document.getElementById('adressevoie');
-		var adressecomplement = document.getElementById('adressecomplement');
-		var adressecp = document.getElementById('adressecp');
-		var adressecommune = document.getElementById('adressecommune');
-		var mail = document.getElementById('mail');
+		var acteur = document.getElementById('acteur').value;
+		var categorie = document.getElementById('categorie').value;
+		var souscategorie = document.getElementById('souscategorie').value;
+		var activite_produit = document.getElementById('activite_produit').value;
+		var demarchezd = document.getElementById('demarchezd').value;
+		var referent = document.getElementById('referent').value;
+		var tel = document.getElementById('tel').value;
+		var siteinternet = document.getElementById('siteinternet').value;
+		var facebook = document.getElementById('facebook').value;
+		var adressenum = document.getElementById('adressenum').value;
+		var adressevoie = document.getElementById('adressevoie').value;
+		var adressecomplement = document.getElementById('adressecomplement').value;
+		var adressecp = document.getElementById('adressecp').value;
+		var adressecommune = document.getElementById('adressecommune').value;
+		var mail = document.getElementById('mail').value;
 		var image = document.getElementById("image").files[0];
 		var erreur = "Merci de bien vouloir : <br/>" ;
 		
 		
-		if (categorie.value=='none')
+		if (categorie=='none')
 		erreur = erreur + "- Choisir une catégorie<br/>";
 		
-		if (acteur.value=='')
+		if (acteur=='')
 		erreur = erreur + "- Remplir le champ acteur<br/>";
 		
 		if (image != undefined)
@@ -91,42 +91,58 @@ mviewer.customControls.obs_faune_flore_demo = (function() {
 		erreur = erreur + "- Définir un lieu<br/>";
 		
 		if (erreur=="Merci de bien vouloir : <br/>")
-		{mviewer.customControls.obs_faune_flore_demo.send_comment(text.value,_xy[0],_xy[1],categorie.value,mail.value,newFile, acteur.value);}
+		{mviewer.customControls.zero_dechet.send_comment(activite_produit,_xy[0],_xy[1],categorie,mail,newFile, acteur,souscategorie,demarchezd,referent,tel,siteinternet,facebook,adressenum,adressevoie,adressecomplement,adressecp,adressecommune);}
 		else
 		{mviewer.alert(erreur,"alert-info");}
 		 },
 
-		send_comment: function (activite_produit,coord_x,coord_y,categorie,mail,image,acteur)
+		send_comment: function (activite_produit,coord_x,coord_y,categorie,mail,image,acteur,souscategorie,demarchezd,referent,tel,siteinternet,facebook,adressenum,adressevoie,adressecomplement,adressecp,adressecommune)
 		{
-		var xhr = mviewer.customControls.obs_faune_flore_demo.getXMLHttpRequest();
-		
-		var sactivite_produit = encodeURIComponent(activite_produit);
-		var coord_x = encodeURIComponent(coord_x);
-		var coord_y = encodeURIComponent(coord_y);
-		var categorie = encodeURIComponent(categorie);
-		var mail = encodeURIComponent(mail);
-		var imagename = encodeURIComponent(image.name);
-		var acteur = encodeURIComponent(acteur);
 
+		var imagename = encodeURIComponent(image.name);
+		$.ajax({
+			url:'/mviewer/apps/archipel_zd/savecomment.php',
+			method:'POST',
+			data:{
+				imagename:imagename,
+				acteur:acteur,
+				coord_x:coord_x,
+				coord_y:coord_y,
+				activite_produit:activite_produit,
+				categorie:categorie,
+				souscategorie:souscategorie,
+				demarchezd:demarchezd,
+				referent:referent,
+				tel:tel,
+				siteinternet:siteinternet,
+				mail:mail,
+				facebook:facebook,
+				adressenum:adressenum,
+				adressevoie:adressevoie,
+				adressecomplement:adressecomplement,
+				adressecp:adressecp,
+				adressecommune:adressecommune
+
+			},
+		   success:function(data){
+				mviewer.alert("Merci d'avoir participé","alert-info");
+		   }
+		});
 		
 		var formData = new FormData();
 		formData.append("image", image);
-		
-		xhr.open("POST", "/mviewer/apps/faune_flore_demo/savecomment.php", true);
-		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		xhr.send("comment="+sactivite_produit+"&coord_x="+coord_x+"&coord_y="+coord_y+"&categorie="+categorie+"&mail="+mail+"&imagename="+imagename+"&acteur="+acteur);
-		
-		var xhr = mviewer.customControls.obs_faune_flore_demo.getXMLHttpRequest();
+				
+		var xhr = mviewer.customControls.zero_dechet.getXMLHttpRequest();
 		xhr.open("POST", "/mviewer/apps/faune_flore_demo/saveimage.php", true);
 		xhr.send(formData);
 		
-		mviewer.alert("Merci d'avoir participé dédé","alert-info");
-		document.getElementById("ajouter").reset();
+		
+		document.getElementById("formu").reset();
 		document.getElementById('casearrive').style.display='none';
 		document.getElementById('casedepart').style.display='inline';
 		document.getElementById('preview').src='#';
 				
-		mviewer.customControls.obs_faune_flore_demo.destroy();
+		mviewer.customControls.zero_dechet.destroy();
 		
 		},
 		
@@ -188,7 +204,7 @@ mviewer.customControls.obs_faune_flore_demo = (function() {
 			mviewer.getMap().removeInteraction(_draw);
 			var selectArchipel = new ol.interaction.Select({
 				condition: ol.events.condition.click,
-				layers: [mviewer.customLayers.obs_faune_flore_demo.layer]
+				layers: [mviewer.customLayers.zero_dechet.layer]
 			  });
 			mviewer.getMap().addInteraction(selectArchipel);
 			mviewer.getMap().on('singleclick', function(evt){ 				
@@ -197,10 +213,38 @@ mviewer.customControls.obs_faune_flore_demo = (function() {
 					return donnees;
 				});
 				if(donnees){
-					console.log('dede');
 					var featuress=donnees[0];
-					var nomValue=featuress.get("nom");					
-					$('#nom').val(nomValue);
+					var acteurValue=featuress.get("acteur");
+					var categorieValue=featuress.get("categorie");
+					var souscategorieValue=featuress.get("sous_categorie");
+					var activite_produitValue=featuress.get("activite_produit");
+					var demarchezdValue=featuress.get("demarche_zd");
+					var referentValue=featuress.get("referent");
+					var telValue=featuress.get("telephone");
+					var emailValue=featuress.get("email");
+					var siteinternetValue=featuress.get("site_internet");
+					var facebookValue=featuress.get("facebook");
+					var adressenumValue=featuress.get("adresse_num");
+					var adressevoieValue=featuress.get("adresse_voie");
+					var adressecomplementValue=featuress.get("adresse_complement");
+					var adressecpValue=featuress.get("adresse_cp");
+					var adressecommuneValue=featuress.get("adresse_commune");
+					console.log(acteurValue);					
+					$('#acteurmodif').val(acteurValue);
+					$('#categoriemodif').val(categorieValue);
+					$('#souscategoriemodif').val(souscategorieValue);
+					$('#activite_produitmodif').val(activite_produitValue);
+					$('#demarchezdmodif').val(demarchezdValue);
+					$('#referentmodif').val(referentValue);
+					$('#telmodif').val(telValue);
+					$('#mailmodif').val(emailValue);
+					$('#siteinternetmodif').val(siteinternetValue);
+					$('#facebookmodif').val(facebookValue);
+					$('#adressenummodif').val(adressenumValue);
+					$('#adressevoiemodif').val(adressevoieValue);
+					$('#adressecomplementmodif').val(adressecomplementValue);
+					$('#adressecpmodif').val(adressecpValue);
+					$('#adressecommunemodif').val(adressecommuneValue);
 				}
 			});
 		},
@@ -209,8 +253,8 @@ mviewer.customControls.obs_faune_flore_demo = (function() {
             // mandatory - code executed when panel is closed
             _xy = null;
             mviewer.hideLocation();
-			mviewer.customLayers.obs_faune_flore_demo.layer.getSource().clear();
-			mviewer.customLayers.obs_faune_flore_demo.layer.getSource().refresh();
+			mviewer.customLayers.zero_dechet.layer.getSource().clear();
+			mviewer.customLayers.zero_dechet.layer.getSource().refresh();
         },
 		
 		

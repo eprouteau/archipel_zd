@@ -1,9 +1,9 @@
 
 
- <center><button class="btn btn-default" onclick="mviewer.customControls.obs_faune_flore_demo.showModifyForm();">
+ <center><button class="btn btn-default" onclick="mviewer.customControls.zero_dechet.showModifyForm();">Modifier
 	<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 </button>
-<button class="btn btn-default" onclick="mviewer.customControls.obs_faune_flore_demo.showAddForm();">
+<button class="btn btn-default" onclick="mviewer.customControls.zero_dechet.showAddForm();">Ajouter
 	<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
 </button></center>
 <br/>
@@ -109,27 +109,95 @@
 				<div id="casearrive" style="display:none">
 				<img class="img-responsive" id="preview" src="#" alt="monimage" style="visibility:collapse"/>
 				</div>
-				<input type="file" id="image" name="image" class="file-upload" style="visibility:collapse" onchange="mviewer.customControls.obs_faune_flore_demo.getFileName();" accept="image/*">
+				<input type="file" id="image" name="image" class="file-upload" style="visibility:collapse" onchange="mviewer.customControls.zero_dechet.getFileName();" accept="image/*">
     </div>
 <br/>
 </form>
 <div align="center">
-	<button class="btn btn-default" onclick="mviewer.customControls.obs_faune_flore_demo.getXY();">Localisation
+	<button class="btn btn-default" onclick="mviewer.customControls.zero_dechet.getXY();">Localisation
 		   <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
 	</button>
 	
-	<button class="btn btn-default" onclick="mviewer.customControls.obs_faune_flore_demo.applyEvent();">Valider
+	<button class="btn btn-default" onclick="mviewer.customControls.zero_dechet.applyEvent();">Valider
 		   <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
 	</button>
 	</div>
 </div>
 <div id="modifier" style="display: none;">
+	<center><button class="btn btn-default" onclick="mviewer.customControls.zero_dechet.activateSelect();">Selectionner
+		<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+	</button></center>
+	<br>
 <form id="formedition">
 	<div class="form-group">
-		<input id="nom" class="form-control"></input>
+		<input id="acteurmodif" class="form-control" placeholder="Acteur..."></input>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-md-12 col-md-offset-0">
+			<select id="categoriemodif" class="form-control" >
+			<option value="none" selected disabled>--Choisir une catégorie--</option>
+			<option value="Mon commerçant Zéro Déchet">Mon commerçant Zéro Déchet</option>
+			<option value ="Achat Zéro Déchet">Achat Zéro Déchet</option>
+			</select>
+		</div>
+	</div>
+	<br/>
+	<div class="row">
+		<div class="col-md-12 col-md-offset-0">
+			<select id="souscategoriemodif" class="form-control" >
+			<option value="none" selected disabled>--Choisir une Sous-catégorie--</option>
+			<option value="Mon commerçant Zéro Déchet">Mon commerçant Zéro Déchet</option>
+			<option value ="Achat Zéro Déchet">Achat Zéro Déchet</option>
+			</select>
+		</div>
+	</div>
+	<br/>
+	<div class="form-group">
+		<textarea id="activite_produitmodif" class="form-control" rows="3" placeholder="Activité et produits..."></textarea>		
+	</div>
+	<div class="form-group">
+		<textarea id="demarchezdmodif" class="form-control" rows="3" placeholder="Démarche zéro déchet..."></textarea>		
+	</div>
+	<br/>
+	<div class="form-group">
+		<input id="referentmodif" class="form-control" placeholder="Référent..."></input>			
+	</div>
+	<br/>
+	<div class="form-group">
+		<input id="telmodif" class="form-control" placeholder="Téléphone..."></input>			
+	</div>
+	<br/>
+	<div class="form-group">
+		<input type="email" class="form-control" id="mailmodif" placeholder="Adresse mail...">
+	</div>
+	<br/>
+	<div class="form-group">
+		<input id="siteinternetmodif" class="form-control" placeholder="Site internet..."></input>			
+	</div>
+	<br/>
+	<div class="form-group">
+		<input id="facebookmodif" class="form-control" placeholder="Facebook..."></input>			
+	</div>
+	<br/>
+	<div class="form-group">
+		<input id="adressenummodif" class="form-control" placeholder="Numéro d'adresse..."></input>			
+	</div>
+	<br/>
+	<div class="form-group">
+		<input id="adressevoiemodif" class="form-control" placeholder="Voie/lieu-dit..."></input>			
+	</div>
+	<br/>
+	<div class="form-group">
+		<input id="adressecomplementmodif" class="form-control" placeholder="Complément d'adresse..."></input>			
+	</div>
+	<br/>
+	<div class="form-group">
+		<input id="adressecpmodif" class="form-control" placeholder="Code postal..."></input>			
+	</div>
+	<br/>
+	<div class="form-group">
+		<input id="adressecommunemodif" class="form-control" placeholder="Commune..."></input>			
 	</div>
 </form>
-<button class="btn btn-default" onclick="mviewer.customControls.obs_faune_flore_demo.activateSelect();">Select
-	<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-</button>
 </div>

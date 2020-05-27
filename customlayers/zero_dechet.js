@@ -1,8 +1,8 @@
 {
-    mviewer.customLayers.obs_faune_flore_demo = {};
+    mviewer.customLayers.zero_dechet = {};
     
     var fGeoJSON = function() {
-        $.ajax('apps/faune_flore_demo/data/data.php').done(function(reponse){
+        $.ajax('apps/archipel_zd/data/data.php').done(function(reponse){
             if(reponse=='erreur'){
                 $('#liste').html('<h3>Problème de lecture des données</h3>');
             }else if(reponse=='NaN'){
@@ -21,7 +21,7 @@
         strategy: ol.loadingstrategy.all
     });
     
-    mviewer.customLayers.obs_faune_flore_demo.layer = new ol.layer.Vector({
+    mviewer.customLayers.zero_dechet.layer = new ol.layer.Vector({
             source: sourceDemo,
     style: new ol.style.Style({
         image: new ol.style.Circle({
@@ -36,5 +36,5 @@
         })
     })        
       });
-    mviewer.customLayers.obs_faune_flore_demo.handle = false;
+    mviewer.customLayers.zero_dechet.handle = false;
     } 

@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
-  <application title="Inventaire Zéro Déchet" showhelp="false" logo="./apps/faune_flore_demo/img/logo/archipel.png" help="./apps/faune_flore_demo/mviewer_help_ff.html" exportpng="false" measuretools="true" togglealllayersfromtheme="true" style="css/themes/archipel.css"/>
-	<mapoptions projextent="-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244" zoom="12" center="-179742,6154000" projection="EPSG:3857" maxzoom="19"/>  
+  <application title="Inventaire Zéro Déchet" showhelp="false" logo="./apps/archipel_zd/img/logo/archipel.png" help="./apps/archipel_zd/mviewer_help_ff.html" exportpng="false" measuretools="true" togglealllayersfromtheme="true" style="css/themes/archipel.css"/>
+	<mapoptions projextent="-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244" zoom="9" center="84203,5641683" projection="EPSG:3857" maxzoom="19"/>  
     <baselayers style="default"><!-- style="default"||gallery" -->
         <baselayer  type="OSM" id="positron" label="Positron" title="CartoDb" thumbgallery="img/basemap/positron.png" 
             url="http://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" maxzoom="20" 
             visible="true" attribution="Map tiles by  &lt;a href='http://cartodb.com/attributions'>CartoDb &lt;/a>, under  &lt;a href='http://creativecommons.org/licenses/by/3.0/'>CC BY 3.0 &lt;/a>" />
-    </baselayers>   
-
-<!-- <authentification url="who" loginurl="?login" logouturl="../j_spring_security_logout" enabled="true"/> -->
-    <!-- <proxy url=""/> -->
-    <!-- <olscompletion url="http://api-adresse.data.gouv.fr/search/" type="ban"/> -->
-    <!-- <elasticsearch url="http://ows.region-bretagne.fr/kartenn/_search" geometryfield="geometry" linkid="search_id" querymode="fussy_like_this"/> -->
-    <!-- <searchparameters bbox="true" localities="true" features="true"/> -->
-	
+    </baselayers>   	
 <themes mini="false">
 <theme name="Zéro déchet"  collapsed="false" id="observations" icon="fas fa-recycle">
-        <layer id="obs_faune_flore_demo" name="Zéro déchet" visible="true" queryable="false"
+        <layer id="zero_dechet" name="Zéro déchet" visible="true" queryable="false"
             type="customlayer" opacity="1" legendurl="img/blank.gif"
-            url="apps/faune_flore_demo/customlayers/obs_faune_flore_demo.js"
+            url="apps/archipel_zd/customlayers/zero_dechet.js"
             customcontrol="true"
-			customcontrolpath="apps/faune_flore_demo/customcontrols"
+			customcontrolpath="apps/archipel_zd/customcontrols"
             expanded="true"           
             attribution="Source: Val d'Ille-Aubigné"
             metadata=""
