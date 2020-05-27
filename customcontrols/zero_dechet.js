@@ -254,7 +254,10 @@ mviewer.customControls.zero_dechet = (function() {
             _xy = null;
             mviewer.hideLocation();
 			mviewer.customLayers.zero_dechet.layer.getSource().clear();
-			mviewer.customLayers.zero_dechet.layer.getSource().refresh();
+			
+			setTimeout(function () {
+				mviewer.customLayers.zero_dechet.layer.getSource().refresh();
+			  }, 1000);
         },
 		
 		
