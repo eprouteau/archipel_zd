@@ -101,7 +101,7 @@ mviewer.customControls.zero_dechet = (function() {
 
 		var imagename = encodeURIComponent(image.name);
 		$.ajax({
-			url:'/mviewer/apps/archipel_zd/savecomment.php',
+			url:'/gis/apps/archipel_zd/savecomment.php',
 			method:'POST',
 			data:{
 				imagename:imagename,
@@ -133,7 +133,7 @@ mviewer.customControls.zero_dechet = (function() {
 		formData.append("image", image);
 				
 		var xhr = mviewer.customControls.zero_dechet.getXMLHttpRequest();
-		xhr.open("POST", "/mviewer/apps/faune_flore_demo/saveimage.php", true);
+		xhr.open("POST", "/gis/apps/archipel_zd/saveimage.php", true);
 		xhr.send(formData);
 		
 		
